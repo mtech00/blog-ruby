@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   resource :session
   resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -18,5 +19,5 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
 
   end
-  root "sessions#new"
+  root "categories#index"
 end
