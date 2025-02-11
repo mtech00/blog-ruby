@@ -1,0 +1,11 @@
+<header class = "container flex justify-beetwen">
+    <h1 class="flex-1 ">Blog</h1>
+    
+    <nav class>
+        <% if authenticated? %>
+
+        <%= link_to "Categories", categories_path, class: "underline hover:no-underline text-blue-500"%>
+        <%= button_to "Logout", session_path,method: :delete, data: { trubo_confirm: "are you sure" } , class:"underline hover:no-underlinne text-red-500" %>
+        <% end %>
+    </nav>
+</header>        

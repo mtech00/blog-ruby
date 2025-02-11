@@ -1,8 +1,19 @@
-<div>
+
+
+
+<div class="flex justify-between"> <!-- ✅ Fixed div opening -->
   <h1 class="font-bold text-4xl">Categories</h1>
-  <ul>
-    <% @categories.each do |category| %>
-      <li><%= category.title %></li>
-    <% end %>
-  </ul>      
+  
+  <div>
+    <%= link_to "New Category", new_category_path, class: "underline hover:no-underline text-blue-500" %> 
+    <!-- ✅ Fixed `%,>` to `%>` and corrected class syntax -->
+  </div>
 </div>
+
+<div>
+  <ul>
+    <%= render @categories %> 
+  <!-- ✅ This works **only if** a `_category.html.erb` partial exists in `app/views/categories/` -->
+  </ul>
+</div>  
+
