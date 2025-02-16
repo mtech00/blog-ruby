@@ -1,0 +1,23 @@
+<%= content_for :title, "Posts" %>
+
+<div class="flex flex-col gap-4 w-full">
+  <div class="flex justify-between items-center w-full">
+    <h1 class="font-bold text-4xl">Posts</h1>
+
+    <%= link_to "New Post", new_post_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+  </div>
+
+  <div id="posts" class="min-w-full flex flex-col gap-4">
+    <% if @page.records.any? %>
+      <%= render @page.records %>
+    <% else %>
+      <p class="text-center my-10">No posts found.</p>
+    <% end %>
+  </div>
+
+  <% unless @page.last? %>
+    <%= turbo_frame_tag :pagination, src: posts_path(page: @page.next_param, format: :turbo_stream), loading: :lazy do %>
+      Loading...
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,15 @@
+<%= form_with model: [ post, comment ],
+            class: "flex flex-col gap-4",
+            data: {
+              controller: "form",
+              action: "turbo:submit-end->form#reset"
+            } do |form| %>
+  <%= render "form_errors", record: form.object %>
+
+  <div>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <%= form.submit class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium cursor-pointer" %>
+<% end %>
